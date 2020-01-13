@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Esta es mi app es genial</string>
+    <string name="roll_label">Roll</string>
+    <string name="hello_label">Hello World</string>
+    <string name="count_up">Count Up</string>
+    <string name="restablecer_label">Restablecer</string>
+</resources>
