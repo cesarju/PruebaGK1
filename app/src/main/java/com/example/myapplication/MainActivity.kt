@@ -7,12 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-
+    //lateinit var -> nos permite minimizar la llamada del findViewById como se muestra mas abajo
     lateinit var diceImage : ImageView
     lateinit var diceImage1 : ImageView
     lateinit var diceImage2 : ImageView
     lateinit var diceImage3 : ImageView
     lateinit var rollButton: Button
+    lateinit var deleteButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +27,11 @@ class MainActivity : AppCompatActivity() {
         diceImage1 = findViewById(R.id.dice_image1)
         diceImage2 = findViewById(R.id.dice_image2)
         diceImage3 = findViewById(R.id.dice_image3)
+
+        deleteButton = findViewById(R.id.delete_button)
         //Llamada a la funcion del button
         rollButton.setOnClickListener { (rollDice(getRandomDiceImage(),getRandomDiceImage(), getRandomDiceImage(), getRandomDiceImage())) }
+        deleteButton.setOnClickListener { deleteButton() }
     }
     private fun rollDice(valorDeImage : Int, valorDeImage1: Int, valorDeImage2 : Int, valorDeImage3 : Int ) {
         diceImage.setImageResource(valorDeImage)
@@ -46,5 +50,11 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.dice_6
         }
         return drawableResourse
+    }
+    private fun deleteButton(){
+        diceImage.setImageResource(R.drawable.empty_dice)
+        diceImage1.setImageResource(R.drawable.empty_dice)
+        diceImage2.setImageResource(R.drawable.empty_dice)
+        diceImage3.setImageResource(R.drawable.empty_dice)
     }
 }
