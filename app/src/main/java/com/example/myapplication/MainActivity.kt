@@ -10,6 +10,8 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var diceImage : ImageView
     lateinit var diceImage1 : ImageView
+    lateinit var diceImage2 : ImageView
+    lateinit var diceImage3 : ImageView
     lateinit var rollButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,21 +24,20 @@ class MainActivity : AppCompatActivity() {
         rollButton = findViewById(R.id.roll_button)
         diceImage = findViewById(R.id.dice_image)
         diceImage1 = findViewById(R.id.dice_image1)
+        diceImage2 = findViewById(R.id.dice_image2)
+        diceImage3 = findViewById(R.id.dice_image3)
         //Llamada a la funcion del button
-        rollButton.setOnClickListener { (rollDice()) }
+        rollButton.setOnClickListener { (rollDice(getRandomDiceImage(),getRandomDiceImage(), getRandomDiceImage(), getRandomDiceImage())) }
     }
-    private fun rollDice() {
-        val randomInt1 = Random().nextInt(6)+1
-        val randomInt2 = Random().nextInt(6)+1
-            val drawableResourse = when (randomInt1) {
-                1 -> R.drawable.dice_1
-                2 -> R.drawable.dice_2
-                3 -> R.drawable.dice_3
-                4 -> R.drawable.dice_4
-                5 -> R.drawable.dice_5
-                else -> R.drawable.dice_6
-            }
-        val drawableResourse2 = when(randomInt2) {
+    private fun rollDice(valorDeImage : Int, valorDeImage1: Int, valorDeImage2 : Int, valorDeImage3 : Int ) {
+        diceImage.setImageResource(valorDeImage)
+        diceImage1.setImageResource(valorDeImage1)
+        diceImage2.setImageResource(valorDeImage2)
+        diceImage3.setImageResource(valorDeImage3)
+    }
+    fun getRandomDiceImage() : Int {
+        val randomInt = Random().nextInt(6)+1
+        val drawableResourse = when (randomInt) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -44,7 +45,6 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
-            diceImage.setImageResource(drawableResourse)
-            diceImage1.setImageResource(drawableResourse2)
+        return drawableResourse
     }
 }
